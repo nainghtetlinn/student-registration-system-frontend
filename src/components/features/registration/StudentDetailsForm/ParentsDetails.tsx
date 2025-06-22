@@ -14,7 +14,6 @@ export const ParentsDetails = () => {
       <FormInputField
         control={form.control}
         name='father.name'
-        hideErrorMessage
         label='အဘအမည်'
         placeholder='Eg- U Mg'
       />
@@ -27,33 +26,28 @@ export const ParentsDetails = () => {
       />
       <FormInputField
         control={form.control}
-        hideErrorMessage
         name='father.age'
         label='အသက်'
       />
       <FormInputField
         control={form.control}
         name='father.ethnicity'
-        hideErrorMessage
         label='လူမျိုး'
       />
       <FormInputField
         control={form.control}
         name='father.religion'
-        hideErrorMessage
         label='ကိုးကွယ်သည့်ဘာသာ'
       />
       <FormInputField
         control={form.control}
         name='father.job'
-        hideErrorMessage
         label='အလုပ်အကိုင်/ရာထူး/ဌာန'
       />
       <Separator />
       <FormInputField
         control={form.control}
         name='mother.name'
-        hideErrorMessage
         label='အမိအမည်'
         placeholder='Eg- Daw Mg'
       />
@@ -67,25 +61,21 @@ export const ParentsDetails = () => {
       <FormInputField
         control={form.control}
         name='mother.age'
-        hideErrorMessage
         label='အသက်'
       />
       <FormInputField
         control={form.control}
         name='mother.ethnicity'
-        hideErrorMessage
         label='လူမျိုး'
       />
       <FormInputField
         control={form.control}
         name='mother.religion'
-        hideErrorMessage
         label='ကိုးကွယ်သည့်ဘာသာ'
       />
       <FormInputField
         control={form.control}
         name='mother.job'
-        hideErrorMessage
         label='အလုပ်အကိုင်/ရာထူး/ဌာန'
       />
     </div>

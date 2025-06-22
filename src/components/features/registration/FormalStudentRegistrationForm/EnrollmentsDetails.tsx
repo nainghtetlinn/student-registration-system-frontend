@@ -31,7 +31,6 @@ export const EnrollmentsDetails = () => {
             <FormSelectField
               control={form.control}
               name={`enrollments.${index}.course`}
-              hideErrorMessage
               label='သင်တန်းနှစ်'
               placeholder='Select one'
               items={[

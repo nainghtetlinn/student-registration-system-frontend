@@ -19,7 +19,6 @@ export const StudentDetails = () => {
       <FormSelectField
         control={form.control}
         name='courseName'
-        hideErrorMessage
         label='မည်သည့်ခုနှစ်သင်တန်း'
         placeholder='အခုနှစ်သင်တန်း'
         items={[
@@ -36,14 +35,12 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.name.en'
-        hideErrorMessage
         label='အမည် (အင်္ဂလိပ်)'
         placeholder='Eg- Mg Mg'
       />
       <FormInputField
         control={form.control}
         name='student.name.mm'
-        hideErrorMessage
         label='အမည် (မြန်မာ)'
         placeholder='Eg- မောင်မောင်'
       />
@@ -68,7 +65,6 @@ export const StudentDetails = () => {
       <DobPicker
         control={form.control}
         name='student.dateOfBirth'
-        hideErrorMessage
       />
       <RollNoInput
         control={form.control}

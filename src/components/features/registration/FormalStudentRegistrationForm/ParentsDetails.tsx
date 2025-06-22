@@ -17,14 +17,12 @@ export const FatherDetails = () => {
       <FormInputField
         control={form.control}
         name='father.name.mm'
-        hideErrorMessage
         label='အမည် (မြန်မာ)'
         placeholder='Eg- ဦးမောင်'
       />
       <FormInputField
         control={form.control}
         name='father.name.en'
-        hideErrorMessage
         label='အမည် (အင်္ဂလိပ်)'
         placeholder='Eg- U Mg'
       />
@@ -38,31 +36,26 @@ export const FatherDetails = () => {
       <FormInputField
         control={form.control}
         name='father.acsc'
-        hideErrorMessage
         label='ဧည့်နိုင်ငံသားလက်မှတ်အမှတ်'
       />
       <FormInputField
         control={form.control}
         name='father.ethnicity'
-        hideErrorMessage
         label='လူမျိုး'
       />
       <FormInputField
         control={form.control}
         name='father.religion'
-        hideErrorMessage
         label='ကိုးကွယ်သည့်ဘာသာ'
       />
       <FormInputField
         control={form.control}
         name='father.placeOfBirth'
-        hideErrorMessage
         label='မွေးဖွားရာဒေသ'
       />
       <DobPicker
         control={form.control}
         name='father.dateOfBirth'
-        hideErrorMessage
       />
     </div>
   )
@@ -76,14 +69,12 @@ export const MotherDetails = () => {
       <FormInputField
         control={form.control}
         name='mother.name.mm'
-        hideErrorMessage
         label='အမည် (မြန်မာ)'
         placeholder='Eg- ဦးမောင်'
       />
       <FormInputField
         control={form.control}
         name='mother.name.en'
-        hideErrorMessage
         label='အမည် (အင်္ဂလိပ်)'
         placeholder='Eg- U Mg'
       />
@@ -97,31 +88,26 @@ export const MotherDetails = () => {
       <FormInputField
         control={form.control}
         name='mother.acsc'
-        hideErrorMessage
         label='ဧည့်နိုင်ငံသားလက်မှတ်အမှတ်'
       />
       <FormInputField
         control={form.control}
         name='mother.ethnicity'
-        hideErrorMessage
         label='လူမျိုး'
       />
       <FormInputField
         control={form.control}
         name='mother.religion'
-        hideErrorMessage
         label='ကိုးကွယ်သည့်ဘာသာ'
       />
       <FormInputField
         control={form.control}
         name='mother.placeOfBirth'
-        hideErrorMessage
         label='မွေးဖွားရာဒေသ'
       />
       <DobPicker
         control={form.control}
         name='mother.dateOfBirth'
-        hideErrorMessage
       />
     </div>
   )

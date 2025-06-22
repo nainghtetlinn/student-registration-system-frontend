@@ -15,7 +15,6 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.name'
-        hideErrorMessage
         label='အမည်'
         placeholder='Eg- Mg Mg'
       />
@@ -29,7 +28,6 @@ export const StudentDetails = () => {
       <DobPicker
         control={form.control}
         name='student.dateOfBirth'
-        hideErrorMessage
       />
       <RollNoInput
         control={form.control}
@@ -41,21 +39,18 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.height'
-        hideErrorMessage
         label='အရပ်'
         placeholder='Eg- 5 ft 9 in'
       />
       <FormInputField
         control={form.control}
         name='student.weight'
-        hideErrorMessage
         label='ကိုယ်အလေးချိန်'
         placeholder='Eg- 100 lb'
       />
       <FormSelectField
         control={form.control}
         name='student.bloodType'
-        hideErrorMessage
         label='သွေးအုပ်စု'
         placeholder='Select blood type'
         items={[
@@ -73,7 +68,6 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.hobby'
-        hideErrorMessage
         label='ဝါသနာ(အားကစား/ဂီတ/အနုပညာစသည့်)နှင့် ထူးချွန်မှုအဆင့်'
       />
     </div>

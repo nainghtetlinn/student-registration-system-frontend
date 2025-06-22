@@ -18,25 +18,21 @@ export const ContactsDetails = () => {
         control={form.control}
         name='contacts.currentAddress'
         label='နေရပ်လိပ်စာ'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='contacts.contactNo'
         label='ဆက်သွယ်ရန် တယ်လီဖုန်းနံပါတ်'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='contacts.parentsAddress'
         label='မိဘနေရပ်လိပ်စာ'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='contacts.parentsContactNo'
         label='ဆက်သွယ်ရန် တယ်လီဖုန်းနံပါတ်'
-        hideErrorMessage
       />
     </div>
   )

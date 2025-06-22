@@ -17,14 +17,12 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.name.mm'
-        hideErrorMessage
         label='အမည် (မြန်မာ)'
         placeholder='Eg- မောင်မောင်'
       />
       <FormInputField
         control={form.control}
         name='student.name.en'
-        hideErrorMessage
         label='အမည် (အင်္ဂလိပ်)'
         placeholder='Eg- Mg Mg'
       />
@@ -38,36 +36,30 @@ export const StudentDetails = () => {
       <FormInputField
         control={form.control}
         name='student.acsc'
-        hideErrorMessage
         label='ဧည့်နိုင်ငံသားလက်မှတ်အမှတ်'
       />
       <FormInputField
         control={form.control}
         name='student.ethnicity'
-        hideErrorMessage
         label='လူမျိုး'
       />
       <FormInputField
         control={form.control}
         name='student.religion'
-        hideErrorMessage
         label='ကိုးကွယ်သည့်ဘာသာ'
       />
       <FormInputField
         control={form.control}
         name='student.placeOfBirth'
-        hideErrorMessage
         label='မွေးဖွားရာဒေသ'
       />
       <DobPicker
         control={form.control}
         name='student.dateOfBirth'
-        hideErrorMessage
       />
       <FormRadioGroupField
         control={form.control}
         name='student.hadScholarship'
-        hideErrorMessage
         label='ပညာသင်ထောက်ပံ့ကြေးရရှိခဲ့ခြင်းရှိ/မရှိ'
         items={[
           { key: 'yes', label: 'ရှိ' },

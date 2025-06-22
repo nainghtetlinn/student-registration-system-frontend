@@ -13,25 +13,21 @@ export const SupporterDetails = () => {
         control={form.control}
         name='supporter.name'
         label='အမည်'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='supporter.relationshipType'
         label='တော်စပ်ပုံ'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='supporter.job'
         label='အလုပ်အကိုင်'
-        hideErrorMessage
       />
       <FormInputField
         control={form.control}
         name='supporter.address'
         label='နေရပ်လိပ်စာ'
-        hideErrorMessage
       />
     </div>
   )

@@ -1,13 +1,15 @@
 import { FormInputField } from '@/components/ui/form-fields'
 import { NrcInput } from '../NrcInput'
-import { Separator } from '@/components/ui/seperator'
 
 import { useFormContext } from 'react-hook-form'
 
-import { TParentsDetailsSchema } from '@/validators/registration/studentRegistrationForm'
+import {
+  TFatherDetailsSchema,
+  TMotherDetailsSchema,
+} from '@/validators/registration/studentRegistrationForm'
 
-export const ParentsDetails = () => {
-  const form = useFormContext<TParentsDetailsSchema>()
+export const FatherDetails = () => {
+  const form = useFormContext<TFatherDetailsSchema>()
 
   return (
     <div className='flex flex-col gap-4 min-h-[550px]'>
@@ -35,7 +37,14 @@ export const ParentsDetails = () => {
         name='father.job'
         label='အလုပ်အကိုင်'
       />
-      <Separator />
+    </div>
+  )
+}
+export const MotherDetails = () => {
+  const form = useFormContext<TMotherDetailsSchema>()
+
+  return (
+    <div className='flex flex-col gap-4 min-h-[550px]'>
       <FormInputField
         control={form.control}
         name='mother.name.en'

@@ -1,14 +1,18 @@
 import { z } from 'zod'
 
 import { studentDetailsSchema } from './studentDetailsSchema'
-import { parentsDetailsSchema } from './parentsDetailsSchema'
+import {
+  fatherDetailsSchema,
+  motherDetailsSchema,
+} from './parentsDetailsSchema'
 import { sibilingsDetailsSchema } from './sibilingsDetailsSchema'
 import { contactsDetailsSchema } from './contactsDetailsSchema'
 import { specialJobsDetailsSchema } from './specialJobsDetailsSchema'
 import { acknowledgementSchema } from './acknowledgementSchema'
 
 export const combinedStudentDetailsSchema = studentDetailsSchema
-  .merge(parentsDetailsSchema)
+  .merge(fatherDetailsSchema)
+  .merge(motherDetailsSchema)
   .merge(sibilingsDetailsSchema)
   .merge(contactsDetailsSchema)
   .merge(specialJobsDetailsSchema)

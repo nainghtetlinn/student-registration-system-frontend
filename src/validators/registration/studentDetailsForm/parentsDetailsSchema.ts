@@ -11,9 +11,13 @@ const parentDetailsSchema = z.object({
   job: z.string().min(1),
 })
 
-export const parentsDetailsSchema = z.object({
+export const fatherDetailsSchema = z.object({
   father: parentDetailsSchema,
+})
+
+export const motherDetailsSchema = z.object({
   mother: parentDetailsSchema,
 })
 
-export type TParentsDetailsSchema = z.infer<typeof parentsDetailsSchema>
+export type TFatherDetailsSchema = z.infer<typeof fatherDetailsSchema>
+export type TMotherDetailsSchema = z.infer<typeof motherDetailsSchema>

@@ -3,7 +3,7 @@
 import { MultistepForm } from '../MultistepForm'
 import { AcknowledgementDetails } from './AcknowledgementDetails'
 import { ContactsDetails } from './ContactsDetails'
-import { ParentsDetails } from './ParentsDetails'
+import { FatherDetails, MotherDetails } from './ParentsDetails'
 import { SiblingsDetails } from './SiblingsDetails'
 import { SpecialJobsDetails } from './SpecialJobsDetails'
 import { StudentDetails } from './StudentDetails'
@@ -42,30 +42,36 @@ export const StudentDetailsForm = () => {
         },
         {
           position: 2,
-          title: 'မိဘအချက်အလက်',
-          component: <ParentsDetails />,
-          fields: ['father', 'mother'],
+          title: 'အဖအချက်အလက်',
+          component: <FatherDetails />,
+          fields: ['father'],
         },
         {
           position: 3,
+          title: 'အမိအချက်အလက်',
+          component: <MotherDetails />,
+          fields: ['mother'],
+        },
+        {
+          position: 4,
           title: 'မွေးချင်းမောင်နှမအရင်းအချာများ',
           component: <SiblingsDetails />,
           fields: ['sibilings'],
         },
         {
-          position: 4,
+          position: 5,
           title: 'ဆက်သွယ်ရန်အချက်အလက်',
           component: <ContactsDetails />,
           fields: ['contacts'],
         },
         {
-          position: 5,
+          position: 6,
           title: 'အလုပ်အကိုင်အချက်အလက်',
           component: <SpecialJobsDetails />,
           fields: ['specialJobs'],
         },
         {
-          position: 6,
+          position: 7,
           title: '',
           component: <AcknowledgementDetails />,
           fields: ['acknowledged'],

@@ -32,9 +32,18 @@ const tabContentVariants: Variants = {
   },
 }
 
+export type TStep<
+  TFieldValues extends FieldValues = FieldValues,
+  TFieldPath extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> = {
+  position: number
+  title: string
+  component: React.ReactElement
+  fields: TFieldPath[]
+}
+
 export const MultistepForm = <
   TFieldValues extends FieldValues = FieldValues,
-  TFieldPath extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TContext = any,
   TTransformedValues = TFieldValues
 >({
@@ -46,12 +55,7 @@ export const MultistepForm = <
 }: {
   title: string
   description: string
-  steps: {
-    position: number
-    title: string
-    component: React.ReactElement
-    fields: TFieldPath[]
-  }[]
+  steps: TStep<TFieldValues>[]
   form: UseFormReturn<TFieldValues, TContext, TTransformedValues>
   onSubmit: (data: TTransformedValues) => void
 }) => {

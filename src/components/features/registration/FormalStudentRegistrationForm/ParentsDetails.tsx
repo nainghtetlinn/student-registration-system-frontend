@@ -16,15 +16,15 @@ export const FatherDetails = () => {
     <div className='flex flex-col gap-4 min-h-[550px]'>
       <FormInputField
         control={form.control}
-        name='father.name.mm'
-        label='အမည် (မြန်မာ)'
-        placeholder='Eg- ဦးမောင်'
+        name='father.name.en'
+        label='အဘအမည် (အင်္ဂလိပ်)'
+        placeholder='Eg- U Mg'
       />
       <FormInputField
         control={form.control}
-        name='father.name.en'
-        label='အမည် (အင်္ဂလိပ်)'
-        placeholder='Eg- U Mg'
+        name='father.name.mm'
+        label='အဘအမည် (မြန်မာ)'
+        placeholder='Eg- ဦးမောင်'
       />
       <NrcInput
         control={form.control}
@@ -68,15 +68,15 @@ export const MotherDetails = () => {
     <div className='flex flex-col gap-4 min-h-[550px]'>
       <FormInputField
         control={form.control}
-        name='mother.name.mm'
-        label='အမည် (မြန်မာ)'
-        placeholder='Eg- ဦးမောင်'
+        name='mother.name.en'
+        label='အမိအမည် (အင်္ဂလိပ်)'
+        placeholder='Eg- U Mg'
       />
       <FormInputField
         control={form.control}
-        name='mother.name.en'
-        label='အမည် (အင်္ဂလိပ်)'
-        placeholder='Eg- U Mg'
+        name='mother.name.mm'
+        label='အမိအမည် (မြန်မာ)'
+        placeholder='Eg- ဦးမောင်'
       />
       <NrcInput
         control={form.control}

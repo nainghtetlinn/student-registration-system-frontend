@@ -6,7 +6,7 @@ export const rollNoSchema = z.object({
     .string()
     .refine(
       val => ['CIVIL', 'EC', 'EP', 'MECH', 'IT', 'MN'].includes(val),
-      'Invalid Roll No.'
+      'Invalid major'
     ),
-  no: z.coerce.number().min(1),
+  no: z.coerce.number().gt(0),
 })

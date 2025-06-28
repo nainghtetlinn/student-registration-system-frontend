@@ -7,7 +7,7 @@ export const nrcSchema = z.object({
   nrcNumber: z
     .string()
     .trim()
-    .regex(/^[၀၁၂၃၄၅၆၇၈၉]{6}$/),
+    .regex(/^[0-9၀၁၂၃၄၅၆၇၈၉]{6}$/),
 })
 
 export type TNrcSchema = z.infer<typeof nrcSchema>

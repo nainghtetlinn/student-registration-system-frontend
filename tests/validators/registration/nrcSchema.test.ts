@@ -10,23 +10,23 @@ describe('nrcSchema validation', () => {
     }
     expect(nrcSchema.safeParse(validData).success).toBe(true)
   })
-  it('testInvalidNrcObject', () => {
-    const invalidData = {
+  it('testValidNrcObject', () => {
+    const validData = {
       stateCode: '၁၃',
       townshipCode: 'တကန',
       nrcType: 'နိုင်',
       nrcNumber: '123456',
     }
-    expect(nrcSchema.safeParse(invalidData).success).toBe(false)
+    expect(nrcSchema.safeParse(validData).success).toBe(true)
   })
-  it('testIncalidNrcObject', () => {
-    const invalidData = {
+  it('testValidNrcObject', () => {
+    const validData = {
       stateCode: '၁၃',
       townshipCode: 'တကန',
       nrcType: 'နိုင်',
       nrcNumber: '123၄၅၆',
     }
-    expect(nrcSchema.safeParse(invalidData).success).toBe(false)
+    expect(nrcSchema.safeParse(validData).success).toBe(true)
   })
   it('testInvalidNrcObject', () => {
     const invalidData = {

@@ -19,7 +19,8 @@ import { useState } from 'react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { toast } from 'sonner'
+
+import { useEmployeeLogin } from '@/hooks/useAuth'
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -29,6 +30,8 @@ const LoginSchema = z.object({
 type TLoginSchema = z.infer<typeof LoginSchema>
 
 const AdminLogin = () => {
+  const loginMutation = useEmployeeLogin()
+
   const form = useForm<TLoginSchema>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -40,14 +43,10 @@ const AdminLogin = () => {
   const [show, setShow] = useState(false)
 
   const onSubmit = async (data: TLoginSchema) => {
-    try {
-      setLoading(true)
-      console.log(data)
-    } catch (error: any) {
-      toast.error(error?.message || 'Something went wrong')
-    } finally {
-      setLoading(false)
-    }
+    setLoading(true)
+    loginMutation.mutate(data, {
+      onSettled: () => setLoading(false),
+    })
   }
 
   return (

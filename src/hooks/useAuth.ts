@@ -4,11 +4,37 @@ import { toast } from 'sonner'
 import { getApiError } from '@/lib/utils'
 import { authService } from '@/services/auth.service'
 
+export const useRegister = () => {
+  return useMutation({
+    mutationFn: authService.register,
+    onSuccess: data => {
+      console.log(data)
+      toast.success('Success')
+    },
+    onError: error => {
+      const apiError = getApiError(error)
+      toast.error(apiError.message)
+    },
+  })
+}
+
 export const useCheckUser = () => {
   return useMutation({
     mutationFn: authService.checkUser,
+    onSuccess: () => {
+      toast.success('Success')
+    },
+    onError: error => {
+      const apiError = getApiError(error)
+      toast.error(apiError.message)
+    },
+  })
+}
+
+export const useConfirmUser = () => {
+  return useMutation({
+    mutationFn: authService.confirmUser,
     onSuccess: data => {
-      console.log(data)
       toast.success('Success')
     },
     onError: error => {

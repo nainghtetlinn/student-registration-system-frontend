@@ -12,38 +12,36 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Form } from '@/components/ui/form'
 import { FormInputField } from '@/components/ui/form-fields'
 import { Label } from '@/components/ui/label'
-import { Loader2, LogIn } from 'lucide-react'
+import { Check, Loader2 } from 'lucide-react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useEmployeeLogin } from '@/hooks/useAuth'
-import { LoginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
+import { useConfirmUser } from '@/hooks/useAuth'
+import { ConfirmUserSchema, TConfirmUserSchema } from '@/validators/admin/login'
 
-const AdminLogin = () => {
+const ConfirmUser = () => {
   const router = useRouter()
-  const loginMutation = useEmployeeLogin()
+  const confirmMutation = useConfirmUser()
 
-  const form = useForm<TLoginUserSchema>({
-    resolver: zodResolver(LoginUserSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+  const form = useForm<TConfirmUserSchema>({
+    resolver: zodResolver(ConfirmUserSchema),
+    defaultValues: { name: '', email: '', password: '', confirm: '' },
   })
   const [loading, setLoading] = useState(false)
   const [show, setShow] = useState(false)
 
-  const onSubmit = async (data: TLoginUserSchema) => {
+  const onSubmit = async (data: TConfirmUserSchema) => {
     setLoading(true)
-    loginMutation.mutate(data, {
+    confirmMutation.mutate(data, {
       onSuccess: () => {
         router.push('/admin')
       },
-      onSettled: () => setLoading(false),
+      onSettled: () => {
+        setLoading(false)
+      },
     })
   }
 
@@ -55,9 +53,14 @@ const AdminLogin = () => {
       >
         <Card>
           <CardHeader>
-            <CardTitle>Admin Login</CardTitle>
+            <CardTitle>Confirm Account</CardTitle>
           </CardHeader>
           <CardContent className='grid gap-4'>
+            <FormInputField
+              control={form.control}
+              name='name'
+              label='Name'
+            />
             <FormInputField
               control={form.control}
               name='email'
@@ -70,23 +73,24 @@ const AdminLogin = () => {
               label='Password'
               type={show ? 'text' : 'password'}
             />
+            <FormInputField
+              control={form.control}
+              name='confirm'
+              label='Confirm password'
+              type='password'
+            />
+          </CardContent>
+          <CardFooter className='flex justify-between'>
             <div className='flex gap-2'>
               <Checkbox
                 id='show'
-                onCheckedChange={d => setShow(!!d)}
+                onCheckedChange={c => setShow(!!c)}
               />
               <Label htmlFor='show'>Show password</Label>
             </div>
-          </CardContent>
-          <CardFooter className='flex justify-between'>
-            <Link
-              href='/admin/login/check'
-              className='text-sm underline hover:opacity-70'
-            >
-              New user?
-            </Link>
             <Button disabled={loading}>
-              Login {loading ? <Loader2 className='animate-spin' /> : <LogIn />}
+              Confirm{' '}
+              {loading ? <Loader2 className='animate-spin' /> : <Check />}
             </Button>
           </CardFooter>
         </Card>
@@ -95,4 +99,4 @@ const AdminLogin = () => {
   )
 }
 
-export default AdminLogin
+export default ConfirmUser

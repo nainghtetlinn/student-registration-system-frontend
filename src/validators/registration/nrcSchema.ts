@@ -9,3 +9,5 @@ export const nrcSchema = z.object({
     .trim()
     .regex(/^[၀၁၂၃၄၅၆၇၈၉]{6}$/),
 })
+
+export type TNrcSchema = z.infer<typeof nrcSchema>

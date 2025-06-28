@@ -10,3 +10,5 @@ export const rollNoSchema = z.object({
     ),
   no: z.coerce.number().gt(0),
 })
+
+export type TRollNoSchema = z.infer<typeof rollNoSchema>

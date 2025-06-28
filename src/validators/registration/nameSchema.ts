@@ -12,3 +12,5 @@ export const nameSchema = z.object({
     .min(1)
     .regex(/^[A-Za-z ]+$/),
 })
+
+export type TNameSchema = z.infer<typeof nameSchema>

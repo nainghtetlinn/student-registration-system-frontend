@@ -8,14 +8,18 @@ const defaultDate = '' as unknown as Date
 
 const defaultName = { en: '', mm: '' }
 
-const defaultNrc = {
+export const defaultNrc = {
   stateCode: '',
   townshipCode: '',
   nrcType: '',
   nrcNumber: '',
 }
 
-const defaultRollNo = { year: defaultNumber, major: '', no: defaultNumber }
+export const defaultRollNo = {
+  year: defaultNumber,
+  major: '',
+  no: defaultNumber,
+}
 
 export const defaultStudentRegistrationFormData: TCombinedStudentRegistrationSchema =
   {

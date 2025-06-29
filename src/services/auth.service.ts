@@ -1,34 +1,12 @@
 import axios from '@/lib/axios'
 
-interface EmployeeRegisterPayload {
-  userType: 'Employee'
-  department: string
-  email: string
-  role: string
-}
-
-interface StudentRegisterPayload {
-  userType: 'Student'
-  rollNo: string
-  nrc: string
-}
-
-type RegisterPayload = EmployeeRegisterPayload | StudentRegisterPayload
-
-interface CheckUserPayload {
-  email: string
-}
-
-interface ConfirmUserPayload {
-  email: string
-  name: string
-  password: string
-}
-
-interface EmployeeLoginPayload {
-  email: string
-  password: string
-}
+import {
+  RegisterPayload,
+  CheckUserPayload,
+  ConfirmUserPayload,
+  EmployeeLoginPayload,
+  StudentLoginPayload,
+} from '@/types/services/auth.type'
 
 export const authService = {
   register: async (data: RegisterPayload) => {
@@ -46,6 +24,14 @@ export const authService = {
   employeeLogin: async (data: EmployeeLoginPayload) => {
     const res = await axios.post('/tutgi/api/v1/auth/employee/login', data)
     localStorage.setItem('token', res.data.data.accessToken)
+    return res.data
+  },
+  studentLogin: async (data: StudentLoginPayload) => {
+    const res = await axios.post('/tutgi/api/v1/auth/students/login', data)
+    return res.data
+  },
+  getMe: async () => {
+    const res = await axios.get('/tutgi/api/v1/auth/me')
     return res.data
   },
 }

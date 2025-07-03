@@ -24,7 +24,7 @@ import { useEmployeeLogin } from '@/hooks/useAuth'
 import { login } from '@/lib/features/user/userSlice'
 import { useAppDispatch } from '@/lib/store'
 import { LoginSuccessData } from '@/types/services/auth.type'
-import { LoginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
+import { loginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
 
 const AdminLogin = () => {
   const router = useRouter()
@@ -32,7 +32,7 @@ const AdminLogin = () => {
   const loginMutation = useEmployeeLogin()
 
   const form = useForm<TLoginUserSchema>({
-    resolver: zodResolver(LoginUserSchema),
+    resolver: zodResolver(loginUserSchema),
     defaultValues: {
       email: '',
       password: '',

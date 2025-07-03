@@ -1,12 +1,10 @@
 import { z } from 'zod'
 
-export const CheckUserSchema = z.object({
+export const checkUserSchema = z.object({
   email: z.string().email(),
 })
 
-export type TCheckUserSchema = z.infer<typeof CheckUserSchema>
-
-export const ConfirmUserSchema = z
+export const confirmUserSchema = z
   .object({
     email: z.string().email(),
     name: z.string().min(1),
@@ -18,11 +16,11 @@ export const ConfirmUserSchema = z
     path: ['confirm'],
   })
 
-export type TConfirmUserSchema = z.infer<typeof ConfirmUserSchema>
-
-export const LoginUserSchema = z.object({
+export const loginUserSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
 })
 
-export type TLoginUserSchema = z.infer<typeof LoginUserSchema>
+export type TCheckUserSchema = z.infer<typeof checkUserSchema>
+export type TConfirmUserSchema = z.infer<typeof confirmUserSchema>
+export type TLoginUserSchema = z.infer<typeof loginUserSchema>

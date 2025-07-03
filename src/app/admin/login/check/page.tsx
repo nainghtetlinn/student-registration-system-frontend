@@ -18,14 +18,14 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useCheckUser } from '@/hooks/useAuth'
-import { CheckUserSchema, TCheckUserSchema } from '@/validators/admin/login'
+import { checkUserSchema, TCheckUserSchema } from '@/validators/admin/login'
 
 const CheckUser = () => {
   const router = useRouter()
   const checkMutation = useCheckUser()
 
   const form = useForm<TCheckUserSchema>({
-    resolver: zodResolver(CheckUserSchema),
+    resolver: zodResolver(checkUserSchema),
     defaultValues: { email: '' },
   })
   const [loading, setLoading] = useState(false)

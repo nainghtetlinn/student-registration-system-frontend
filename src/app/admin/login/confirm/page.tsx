@@ -20,14 +20,14 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useConfirmUser } from '@/hooks/useAuth'
-import { ConfirmUserSchema, TConfirmUserSchema } from '@/validators/admin/login'
+import { confirmUserSchema, TConfirmUserSchema } from '@/validators/admin/login'
 
 const ConfirmUser = () => {
   const router = useRouter()
   const confirmMutation = useConfirmUser()
 
   const form = useForm<TConfirmUserSchema>({
-    resolver: zodResolver(ConfirmUserSchema),
+    resolver: zodResolver(confirmUserSchema),
     defaultValues: { name: '', email: '', password: '', confirm: '' },
   })
   const [loading, setLoading] = useState(false)

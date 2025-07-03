@@ -36,8 +36,10 @@ const ConfirmUser = () => {
   const onSubmit = async (data: TConfirmUserSchema) => {
     setLoading(true)
     confirmMutation.mutate(data, {
-      onSuccess: () => {
-        router.push('/admin')
+      onSuccess: (result: { data: boolean }) => {
+        if (result.data) {
+          router.push('/admin/login')
+        }
       },
       onSettled: () => {
         setLoading(false)

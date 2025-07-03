@@ -40,7 +40,17 @@ const AdminLogin = () => {
   const onSubmit = async (data: TLoginUserSchema) => {
     setLoading(true)
     loginMutation.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (result: {
+        data: {
+          accessToken: string
+          currentUser: {
+            department: string
+            email: string
+            name: string
+            role: string
+          }
+        }
+      }) => {
         router.push('/admin')
       },
       onSettled: () => setLoading(false),

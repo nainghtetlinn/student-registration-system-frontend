@@ -4,6 +4,7 @@ import './globals.css'
 import { Toaster } from 'sonner'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { ReactQueryClientProvider } from '@/providers/query-provider'
+import { StoreProvider } from '@/providers/store-provider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -40,7 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
+          <ReactQueryClientProvider>
+            <StoreProvider>{children}</StoreProvider>
+          </ReactQueryClientProvider>
         </ThemeProvider>
       </body>
     </html>

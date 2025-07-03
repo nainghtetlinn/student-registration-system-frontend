@@ -32,3 +32,13 @@ export type StudentLoginPayload = {
   rollNo: string
   nrc: string
 }
+
+export type LoginSuccessData = {
+  accessToken: string
+  currentUser: {
+    department: string
+    email: string
+    name: string
+    role: string
+  }
+}

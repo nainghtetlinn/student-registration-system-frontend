@@ -21,6 +21,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useEmployeeLogin } from '@/hooks/useAuth'
+import { LoginSuccessData } from '@/types/services/auth.type'
 import { LoginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
 
 const AdminLogin = () => {
@@ -40,17 +41,7 @@ const AdminLogin = () => {
   const onSubmit = async (data: TLoginUserSchema) => {
     setLoading(true)
     loginMutation.mutate(data, {
-      onSuccess: (result: {
-        data: {
-          accessToken: string
-          currentUser: {
-            department: string
-            email: string
-            name: string
-            role: string
-          }
-        }
-      }) => {
+      onSuccess: (result: { data: LoginSuccessData }) => {
         router.push('/admin')
       },
       onSettled: () => setLoading(false),

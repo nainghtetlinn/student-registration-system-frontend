@@ -21,11 +21,14 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useEmployeeLogin } from '@/hooks/useAuth'
+import { login } from '@/lib/features/user/userSlice'
+import { useAppDispatch } from '@/lib/store'
 import { LoginSuccessData } from '@/types/services/auth.type'
 import { LoginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
 
 const AdminLogin = () => {
   const router = useRouter()
+  const dispatch = useAppDispatch()
   const loginMutation = useEmployeeLogin()
 
   const form = useForm<TLoginUserSchema>({
@@ -42,6 +45,7 @@ const AdminLogin = () => {
     setLoading(true)
     loginMutation.mutate(data, {
       onSuccess: (result: { data: LoginSuccessData }) => {
+        dispatch(login(result.data))
         router.push('/admin')
       },
       onSettled: () => setLoading(false),

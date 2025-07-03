@@ -33,9 +33,9 @@ const CheckUser = () => {
   const onSubmit = async (data: TCheckUserSchema) => {
     setLoading(true)
     checkMutation.mutate(data, {
-      onSuccess: (data: { loginFirstTime: boolean }) => {
-        if (data.loginFirstTime) {
-          router.push('/admin/confirm')
+      onSuccess: (result: { data: { loginFirstTime: boolean } }) => {
+        if (result.data.loginFirstTime) {
+          router.push('/admin/login/confirm')
         } else {
           router.push('/admin/login')
         }

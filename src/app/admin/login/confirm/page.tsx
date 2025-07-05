@@ -15,34 +15,31 @@ import { Label } from '@/components/ui/label'
 import { Check, Loader2 } from 'lucide-react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useConfirmUser } from '@/hooks/useAuth'
+import { useConfirmUser } from '@/api/hooks/useAuth'
 import { confirmUserSchema, TConfirmUserSchema } from '@/validators/admin/login'
 
 const ConfirmUser = () => {
   const router = useRouter()
-  const confirmMutation = useConfirmUser()
+  const searchParams = useSearchParams()
+  const email = searchParams.get('email')
+  const { mutate, isPending } = useConfirmUser()
 
   const form = useForm<TConfirmUserSchema>({
     resolver: zodResolver(confirmUserSchema),
-    defaultValues: { name: '', email: '', password: '', confirm: '' },
+    defaultValues: { name: '', email: email || '', password: '', confirm: '' },
   })
-  const [loading, setLoading] = useState(false)
   const [show, setShow] = useState(false)
 
   const onSubmit = async (data: TConfirmUserSchema) => {
-    setLoading(true)
-    confirmMutation.mutate(data, {
-      onSuccess: (result: { data: boolean }) => {
+    mutate(data, {
+      onSuccess: result => {
         if (result.data) {
-          router.push('/admin/login')
+          router.push(email ? '/admin/login?email=' + email : '/admin/login')
         }
-      },
-      onSettled: () => {
-        setLoading(false)
       },
     })
   }
@@ -90,9 +87,9 @@ const ConfirmUser = () => {
               />
               <Label htmlFor='show'>Show password</Label>
             </div>
-            <Button disabled={loading}>
+            <Button disabled={isPending}>
               Confirm{' '}
-              {loading ? <Loader2 className='animate-spin' /> : <Check />}
+              {isPending ? <Loader2 className='animate-spin' /> : <Check />}
             </Button>
           </CardFooter>
         </Card>

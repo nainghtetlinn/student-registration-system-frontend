@@ -14,34 +14,28 @@ import { Loader2, Search } from 'lucide-react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useCheckUser } from '@/hooks/useAuth'
+import { useCheckUser } from '@/api/hooks/useAuth'
 import { checkUserSchema, TCheckUserSchema } from '@/validators/admin/login'
 
 const CheckUser = () => {
   const router = useRouter()
-  const checkMutation = useCheckUser()
+  const { mutate, isPending } = useCheckUser()
 
   const form = useForm<TCheckUserSchema>({
     resolver: zodResolver(checkUserSchema),
     defaultValues: { email: '' },
   })
-  const [loading, setLoading] = useState(false)
 
   const onSubmit = async (data: TCheckUserSchema) => {
-    setLoading(true)
-    checkMutation.mutate(data, {
-      onSuccess: (result: { data: { loginFirstTime: boolean } }) => {
+    mutate(data, {
+      onSuccess: result => {
         if (result.data.loginFirstTime) {
-          router.push('/admin/login/confirm')
+          router.push('/admin/login/confirm?email=' + data.email)
         } else {
           router.push('/admin/login')
         }
-      },
-      onSettled: () => {
-        setLoading(false)
       },
     })
   }
@@ -65,9 +59,9 @@ const CheckUser = () => {
             />
           </CardContent>
           <CardFooter className='flex justify-end'>
-            <Button disabled={loading}>
+            <Button disabled={isPending}>
               Search{' '}
-              {loading ? <Loader2 className='animate-spin' /> : <Search />}
+              {isPending ? <Loader2 className='animate-spin' /> : <Search />}
             </Button>
           </CardFooter>
         </Card>

@@ -1,4 +1,4 @@
-import { LoginSuccessData } from '@/types/services/auth.type'
+import { EmployeeLoginSuccessData } from '@/api/types/auth.type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface UserState {
@@ -15,9 +15,9 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<LoginSuccessData>) => {
+    login: (state, action: PayloadAction<EmployeeLoginSuccessData>) => {
       state.isLoggedIn = true
-      state.user = action.payload.currentUser
+      state.user = action.payload.data.currentUser
     },
     logout: state => {
       state.isLoggedIn = false

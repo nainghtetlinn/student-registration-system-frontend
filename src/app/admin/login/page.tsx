@@ -16,39 +16,37 @@ import { Loader2, LogIn } from 'lucide-react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useEmployeeLogin } from '@/hooks/useAuth'
+import { useEmployeeLogin } from '@/api/hooks/useAuth'
 import { login } from '@/lib/features/user/userSlice'
 import { useAppDispatch } from '@/lib/store'
-import { LoginSuccessData } from '@/types/services/auth.type'
 import { loginUserSchema, TLoginUserSchema } from '@/validators/admin/login'
 
 const AdminLogin = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const email = searchParams.get('email')
   const dispatch = useAppDispatch()
-  const loginMutation = useEmployeeLogin()
+  const { mutate, isPending } = useEmployeeLogin()
 
   const form = useForm<TLoginUserSchema>({
     resolver: zodResolver(loginUserSchema),
     defaultValues: {
-      email: '',
+      email: email || '',
       password: '',
     },
   })
-  const [loading, setLoading] = useState(false)
   const [show, setShow] = useState(false)
 
   const onSubmit = async (data: TLoginUserSchema) => {
-    setLoading(true)
-    loginMutation.mutate(data, {
-      onSuccess: (result: { data: LoginSuccessData }) => {
-        dispatch(login(result.data))
+    mutate(data, {
+      onSuccess: result => {
+        dispatch(login(result))
         router.push('/admin')
       },
-      onSettled: () => setLoading(false),
     })
   }
 
@@ -90,8 +88,9 @@ const AdminLogin = () => {
             >
               New user?
             </Link>
-            <Button disabled={loading}>
-              Login {loading ? <Loader2 className='animate-spin' /> : <LogIn />}
+            <Button disabled={isPending}>
+              Login{' '}
+              {isPending ? <Loader2 className='animate-spin' /> : <LogIn />}
             </Button>
           </CardFooter>
         </Card>

@@ -33,12 +33,27 @@ export type StudentLoginPayload = {
   nrc: string
 }
 
-export type LoginSuccessData = {
-  accessToken: string
-  currentUser: {
-    department: string
-    email: string
-    name: string
-    role: string
+/* ***********************************************
+ * API Response data
+ */
+export type EmployeeLoginSuccessData = {
+  data: {
+    accessToken: string
+    currentUser: {
+      department: string
+      email: string
+      name: string
+      role: string
+    }
   }
+}
+
+export type CheckUserSuccessData = {
+  data: {
+    loginFirstTime: boolean
+  }
+}
+
+export type ConfirmUserSuccessData = {
+  data: boolean
 }

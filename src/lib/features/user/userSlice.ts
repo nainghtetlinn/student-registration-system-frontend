@@ -3,12 +3,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface UserState {
   isLoggedIn: boolean
-  user: { name: string; email: string; department: string; role: string }
+  token: string | null
+  user: { name: string; email: string; department: string; role: string } | null
 }
 
 const initialState: UserState = {
   isLoggedIn: false,
-  user: { name: '', email: '', department: '', role: '' },
+  token: null,
+  user: null,
 }
 
 const userSlice = createSlice({
@@ -18,10 +20,12 @@ const userSlice = createSlice({
     login: (state, action: PayloadAction<EmployeeLoginSuccessData>) => {
       state.isLoggedIn = true
       state.user = action.payload.data.currentUser
+      state.token = action.payload.data.accessToken
     },
     logout: state => {
       state.isLoggedIn = false
-      state.user = { name: '', email: '', department: '', role: '' }
+      state.user = null
+      state.token = null
     },
   },
 })

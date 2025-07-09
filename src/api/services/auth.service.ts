@@ -9,6 +9,7 @@ import {
   EmployeeLoginSuccessData,
   CheckUserSuccessData,
   ConfirmUserSuccessData,
+  GetMeSuccessData,
 } from '@/api/types/auth.type'
 
 export const authService = {
@@ -35,6 +36,6 @@ export const authService = {
   },
   getMe: async () => {
     const res = await axios.get('/tutgi/api/v1/auth/me')
-    return res.data
+    return res.data as GetMeSuccessData
   },
 }

@@ -57,3 +57,9 @@ export type CheckUserSuccessData = {
 export type ConfirmUserSuccessData = {
   data: boolean
 }
+
+export type GetMeSuccessData = {
+  data: {
+    user: { department: string; email: string; name: string; role: string }
+  }
+}
